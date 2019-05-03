@@ -23,7 +23,10 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              "src/material.css",
+              "src/material.scss",
+              "src/theme.scss"
             ],
             "scripts": []
           },

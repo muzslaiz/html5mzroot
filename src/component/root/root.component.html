@@ -1,0 +1,167 @@
+<div class="nav">
+  <div class="switch">
+    <div class="btn-header btn-first" (click)="typeClicked(0)" [ngClass]="{'selected': global.switchNum === 0}">
+      Heroes
+    </div>
+    <div class="btn-header" (click)="typeClicked(1)" [ngClass]="{'selected': global.switchNum === 1}">
+      Species'
+    </div>
+  </div>
+</div>
+<div class="sub-header">
+  <div class="btn-secondary" [ngClass]="{'selected': global.siteOptions === 'showall'}"
+    (click)="optionsClicked('showall')">
+    Show all
+  </div>
+  <div class="btn-secondary" [ngClass]="{'selected': global.siteOptions === 'addnew'}"
+    (click)="optionsClicked('addnew')">
+    Add new
+  </div>
+</div>
+<div class="heroes" *ngIf="global.switchNum === 0">
+  <div class="showall" *ngIf="global.siteOptions === 'showall'">
+    <div class="main-table">
+      <div class="table-header">
+        <div class="id">
+          ID
+        </div>
+        <div class="name">
+          Name
+        </div>
+        <div class="description header-description">
+          Description
+        </div>
+      </div>
+      <div class="table-body">
+        <div class="table-row" *ngFor="let hero of global.heroes">
+          <div class="id">
+            {{hero.id}}
+          </div>
+          <div class="name">
+            {{hero.name}}
+          </div>
+          <div class="description">
+            {{hero.description}}
+            <button mat-button class="btn-main btn-edit" (click)="editHero(hero)">
+              Edit
+            </button>
+            <button mat-button class="btn-main btn-delete" (click)="deleteHero(hero)">
+              Delete
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="addnew" *ngIf="global.siteOptions === 'addnew'">
+    <div class="main-table">
+      <div class="add-row">
+        <mat-form-field class="add-field">
+          <input matInput placeholder="Name" [(ngModel)]="newHero.name">
+        </mat-form-field>
+      </div>
+      <div class="add-row">
+        <mat-form-field class="add-field">
+          <input matInput placeholder="Description" [(ngModel)]="newHero.description">
+        </mat-form-field>
+      </div>
+      <div class="add-row">
+        <button mat-button class="btn-main" (click)="addHero()">Add</button>
+      </div>
+    </div>
+  </div>
+  <div class="edit" *ngIf="global.siteOptions === 'edit'">
+    <div class="main-table">
+      <div class="add-row">
+        ID: {{actualHero.id}}
+      </div>
+      <div class="add-row">
+        <mat-form-field class="add-field">
+          <input matInput placeholder="Name" [(ngModel)]="actualHero.name">
+        </mat-form-field>
+      </div>
+      <div class="add-row">
+        <mat-form-field class="add-field">
+          <input matInput placeholder="Description" [(ngModel)]="actualHero.description">
+        </mat-form-field>
+      </div>
+      <div class="add-row">
+        <button mat-button class="btn-main" (click)="global.modifyHero(actualHero)">Modify</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="species" *ngIf="global.switchNum === 1">
+  <div class="showall" *ngIf="global.siteOptions === 'showall'">
+    <div class="main-table">
+      <div class="table-header">
+        <div class="id">
+          ID
+        </div>
+        <div class="name">
+          Name
+        </div>
+        <div class="description header-description">
+          Description
+        </div>
+      </div>
+      <div class="table-body">
+        <div class="table-row" *ngFor="let species of global.species">
+          <div class="id">
+            {{species.id}}
+          </div>
+          <div class="name">
+            {{species.name}}
+          </div>
+          <div class="description">
+            {{species.description}}
+            <button mat-button class="btn-main btn-edit" (click)="editSpecies(species)">
+              Edit
+            </button>
+            <button mat-button class="btn-main btn-delete" (click)="deleteSpecies(species)">
+              Delete
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="addnew" *ngIf="global.siteOptions === 'addnew'">
+    <div class="main-table">
+      <div class="add-row">
+        <mat-form-field class="add-field">
+          <input matInput placeholder="Name" [(ngModel)]="newSpecies.name">
+        </mat-form-field>
+      </div>
+      <div class="add-row">
+        <mat-form-field class="add-field">
+          <input matInput placeholder="Description" [(ngModel)]="newSpecies.description">
+        </mat-form-field>
+      </div>
+      <div class="add-row">
+        <button mat-button class="btn-main" (click)="addSpecies()">Add</button>
+      </div>
+    </div>
+  </div>
+  <div class="edit" *ngIf="global.siteOptions === 'edit'">
+    <div class="main-table">
+      <div class="add-row">
+        ID: {{actualSpecies.id}}
+      </div>
+      <div class="add-row">
+        <mat-form-field class="add-field">
+          <input matInput placeholder="Name" [(ngModel)]="actualSpecies.name">
+        </mat-form-field>
+      </div>
+      <div class="add-row">
+        <mat-form-field class="add-field">
+          <input matInput placeholder="Description" [(ngModel)]="actualSpecies.description">
+        </mat-form-field>
+      </div>
+      <div class="add-row">
+        <button mat-button class="btn-main" (click)="global.modifySpecies(actualSpecies)">Modify</button>
+      </div>
+    </div>
+  </div>
+</div>
