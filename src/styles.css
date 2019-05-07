@@ -4,7 +4,7 @@ body{
     color: white;
 }
 .wrapper{
-    background-image: url('./assets/bg.jpg');
+    background-image: url('./assets/sc2-heroes.jpg');
     height: 100vh;
 
     /* Center and scale the image nicely */
